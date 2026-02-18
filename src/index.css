@@ -1,70 +1,172 @@
 @import "tailwindcss";
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@theme {
+  /* Electric Blue scale */
+  --color-electric-50: #eff6ff;
+  --color-electric-100: #dbeafe;
+  --color-electric-200: #bfdbfe;
+  --color-electric-300: #93c5fd;
+  --color-electric-400: #60a5fa;
+  --color-electric-500: #3b82f6;
+  --color-electric-600: #1d4ed8;
+  --color-electric-700: #1e40af;
+  --color-electric-800: #1e3a8a;
+  --color-electric-900: #172554;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Dark Navy scale */
+  --color-navy-50: #f0f4ff;
+  --color-navy-100: #e0e8ff;
+  --color-navy-200: #c2d1fe;
+  --color-navy-300: #94adfd;
+  --color-navy-400: #6080fa;
+  --color-navy-500: #3a55f5;
+  --color-navy-600: #2030e8;
+  --color-navy-700: #1822cc;
+  --color-navy-800: #0f1566;
+  --color-navy-900: #080b3d;
+  --color-navy-950: #040621;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Yellow Accent */
+  --color-accent-300: #fde68a;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+
+  /* Semantic aliases */
+  --color-brand-primary: var(--color-electric-500);
+  --color-brand-dark: var(--color-navy-900);
+  --color-brand-darker: var(--color-navy-950);
+  --color-brand-accent: var(--color-accent-500);
+
+  /* =============================================
+     TYPOGRAPHY
+     ============================================= */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* =============================================
+     SPACING — custom section rhythm values
+     ============================================= */
+  --spacing-section: 6rem;
+  --spacing-section-lg: 8rem;
+
+  /* =============================================
+     BORDER RADIUS
+     ============================================= */
+  --radius-card: 0.75rem;
+  --radius-button: 0.5rem;
+  --radius-pill: 9999px;
+
+  /* =============================================
+     SHADOWS
+     ============================================= */
+  --shadow-electric: 0 0 20px 0 rgb(59 130 246 / 0.4);
+  --shadow-electric-lg: 0 0 40px 0 rgb(59 130 246 / 0.3);
+  --shadow-card: 0 4px 24px 0 rgb(8 11 61 / 0.12);
+  --shadow-card-hover: 0 8px 40px 0 rgb(8 11 61 / 0.2);
+
+  /* =============================================
+     ANIMATION DURATIONS
+     ============================================= */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+
+  /* =============================================
+     Z-INDEX SCALE
+     ============================================= */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* =============================================
+   BASE LAYER — CSS reset and global defaults
+   ============================================= */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-  a:hover {
-    color: #747bff;
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
-  button {
-    background-color: #f9f9f9;
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-navy-950);
+    color: white;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  #root {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Focus ring only on keyboard navigation — not on mouse click */
+  :focus-visible {
+    outline: 2px solid var(--color-electric-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Scroll offset for fixed navbar — sections anchor to below the nav */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* =============================================
+   UTILITIES — custom utility classes
+   ============================================= */
+@layer utilities {
+  /* Electric gradient text — for hero headings and highlights */
+  .text-gradient-electric {
+    background: linear-gradient(
+      135deg,
+      var(--color-electric-400),
+      var(--color-electric-200)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow shadow utilities for buttons and cards */
+  .shadow-electric {
+    box-shadow: var(--shadow-electric);
+  }
+
+  .shadow-electric-lg {
+    box-shadow: var(--shadow-electric-lg);
+  }
+
+  /* Section vertical rhythm — apply to every full section */
+  .section-padding {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .section-padding-lg {
+    padding-top: var(--spacing-section-lg);
+    padding-bottom: var(--spacing-section-lg);
   }
 }
