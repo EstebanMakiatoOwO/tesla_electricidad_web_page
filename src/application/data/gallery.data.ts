@@ -8,7 +8,7 @@ export interface GalleryProject {
 export const GALLERY_PROJECTS: readonly GalleryProject[] = [
   {
     id: 'p1',
-    title: 'Tablero Industrial BT',
+    title: 'Instalación Eléctrica Industrial',
     category: 'Industrial',
     imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop',
   },
@@ -32,7 +32,7 @@ export const GALLERY_PROJECTS: readonly GalleryProject[] = [
   },
   {
     id: 'p5',
-    title: 'Automatización Planta',
+    title: 'Instalación Eléctrica Planta',
     category: 'Industrial',
     imageUrl: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=600&h=400&fit=crop',
   },
@@ -44,7 +44,7 @@ export const GALLERY_PROJECTS: readonly GalleryProject[] = [
   },
   {
     id: 'p7',
-    title: 'Cableado Estructurado',
+    title: 'Instalación Eléctrica Residencial',
     category: 'Residencial',
     imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop',
   },
@@ -57,12 +57,11 @@ export const GALLERY_PROJECTS: readonly GalleryProject[] = [
 ] as const
 
 export const CERTIFICATIONS = [
-  'SEC Chile',
-  'SAMSUNG Authorized',
-  'LG Service Partner',
-  'Midea Installer',
-  'Daikin Certified',
-  'ISO 9001',
-  'Carrier Partner',
+  'Samsung',
+  'LG',
+  'Midea',
+  'Daikin',
+  'Carrier',
   'Mitsubishi Electric',
+  'Trane',
 ] as const

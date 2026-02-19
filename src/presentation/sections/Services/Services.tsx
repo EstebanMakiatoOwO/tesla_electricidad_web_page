@@ -23,7 +23,7 @@ export function Services() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white justify-center mb-4"
           />
           <p className="max-w-2xl mx-auto text-white/50 text-lg leading-relaxed">
-            Electricidad y climatización con certificación NOM. Más de 15 años
+            Especialistas en media y baja tensión. Más de 15 años
             respaldando hogares, oficinas e industrias en todo México.
           </p>
         </FadeContent>

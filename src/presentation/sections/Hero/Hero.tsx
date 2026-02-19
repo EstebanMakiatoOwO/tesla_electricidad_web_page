@@ -33,7 +33,7 @@ export function Hero() {
         >
           <span className="text-electric-300 text-sm">⚡</span>
           <ShinyText
-            text="Instalaciones Eléctricas · Certificada"
+            text="Media y Baja Tensión · Tuxtla Gutiérrez"
             speed={2.5}
             color="#93c5fd"
             shineColor="#ffffff"

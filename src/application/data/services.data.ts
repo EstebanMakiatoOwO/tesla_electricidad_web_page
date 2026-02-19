@@ -12,12 +12,12 @@ export const SERVICES: readonly Service[] = [
     icon: '🏠',
     title: 'Instalación Eléctrica Residencial',
     description:
-      'Diseño e instalación de sistemas eléctricos completos para hogares, departamentos y condominios. Cumplimiento total con la Norma Oficial Mexicana.',
+      'Diseño e instalación de sistemas eléctricos completos para hogares, departamentos y condominios. Trabajamos en baja tensión con materiales de primera calidad.',
     features: [
-      'Cableado eléctrico certificado',
+      'Cableado eléctrico profesional',
       'Circuitos diferenciados por zona',
       'Iluminación LED inteligente',
-      'Cumplimiento NOM incluido',
+      'Instalación segura y documentada',
     ],
   },
   {
@@ -25,10 +25,10 @@ export const SERVICES: readonly Service[] = [
     icon: '🏭',
     title: 'Instalación Industrial y Comercial',
     description:
-      'Soluciones eléctricas de alta potencia para industrias, bodegas, locales comerciales y edificios de oficinas.',
+      'Soluciones eléctricas en media y baja tensión para industrias, bodegas, locales comerciales y edificios de oficinas.',
     features: [
-      'Alta y baja tensión',
-      'Instalaciones certificadas ANCE',
+      'Especialistas en media y baja tensión',
+      'Diagnóstico y planeación eléctrica',
       'Automatización de procesos',
       'Respaldo de energía UPS',
     ],
