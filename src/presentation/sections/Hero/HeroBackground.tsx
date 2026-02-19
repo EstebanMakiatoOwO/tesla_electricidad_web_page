@@ -1,44 +1,18 @@
-import { useEffect, useRef } from 'react'
-import { gsap } from '@infrastructure/gsap'
+import { Lightning } from '@components/ui'
 
 export function HeroBackground() {
-  const orbRef = useRef<HTMLDivElement | null>(null)
-
-  // GSAP infinite float — no ScrollTrigger needed, starts on mount.
-  // gsap.context() ensures cleanup on unmount (React StrictMode safe).
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(orbRef.current, {
-        y: -40,
-        duration: 4,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-      })
-    })
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      {/* Radial gradient glow — bottom left */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_0%_100%,rgb(59_130_246/0.12),transparent_70%)]" />
+    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      {/* WebGL lightning — fills entire hero */}
+      <div className="absolute inset-0 opacity-75">
+        <Lightning hue={220} speed={1.1} intensity={1.4} size={0.9} />
+      </div>
 
-      {/* Secondary accent glow — top right */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_100%_0%,rgb(59_130_246/0.07),transparent_60%)]" />
+      {/* Center vignette — keeps text readable over the bright lightning */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,transparent_10%,rgba(0,0,0,0.55)_65%,rgba(0,0,0,0.82)_100%)]" />
 
-      {/* Floating orb — top right, GSAP animated */}
-      <div
-        ref={orbRef}
-        className={[
-          'absolute -top-32 -right-32 w-125 h-125 rounded-full',
-          'bg-electric-500/10 blur-[100px]',
-        ].join(' ')}
-      />
-
-      {/* Subtle grid texture overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgb(255_255_255/0.015)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.015)_1px,transparent_1px)] bg-size-[60px_60px]" />
+      {/* Bottom fade into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-black to-transparent" />
     </div>
   )
 }

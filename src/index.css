@@ -150,6 +150,21 @@
     background-clip: text;
   }
 
+  /* Lightning text — white-hot core bleeding into electric blue, like a bolt */
+  .text-gradient-electric-white {
+    background: linear-gradient(
+      100deg,
+      #ffffff 0%,
+      #e0f2fe 20%,
+      #93c5fd 45%,
+      #3b82f6 70%,
+      #60a5fa 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   /* Glow shadow utilities for buttons and cards */
   .shadow-electric {
     box-shadow: var(--shadow-electric);
