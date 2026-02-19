@@ -174,7 +174,7 @@ export function StaggeredMenu({
           {
             y: 0, opacity: 1, duration: 0.55, ease: 'power3.out',
             stagger: { each: 0.08, from: 'start' },
-            onComplete: () => gsap.set(socialLinks, { clearProps: 'opacity' }),
+            onComplete: () => { gsap.set(socialLinks, { clearProps: 'opacity' }) },
           },
           socialsStart + 0.04,
         )

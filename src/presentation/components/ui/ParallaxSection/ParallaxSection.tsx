@@ -1,6 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { gsap } from '@infrastructure/gsap'
-import { ScrollTrigger } from '@infrastructure/gsap'
 
 interface ParallaxSectionProps {
   children: ReactNode
