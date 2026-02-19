@@ -12,12 +12,12 @@ export const SERVICES: readonly Service[] = [
     icon: '🏠',
     title: 'Instalación Eléctrica Residencial',
     description:
-      'Diseño e instalación de sistemas eléctricos completos para hogares, departamentos y condominios. Cumplimiento total con la norma SEC.',
+      'Diseño e instalación de sistemas eléctricos completos para hogares, departamentos y condominios. Cumplimiento total con la Norma Oficial Mexicana.',
     features: [
-      'Tableros eléctricos modernos',
+      'Cableado eléctrico certificado',
       'Circuitos diferenciados por zona',
       'Iluminación LED inteligente',
-      'Certificación SEC incluida',
+      'Cumplimiento NOM incluido',
     ],
   },
   {
@@ -28,7 +28,7 @@ export const SERVICES: readonly Service[] = [
       'Soluciones eléctricas de alta potencia para industrias, bodegas, locales comerciales y edificios de oficinas.',
     features: [
       'Alta y baja tensión',
-      'Tableros industriales NEMA',
+      'Instalaciones certificadas ANCE',
       'Automatización de procesos',
       'Respaldo de energía UPS',
     ],
@@ -70,19 +70,6 @@ export const SERVICES: readonly Service[] = [
       'Recarga gas R-410A / R-32',
       'Revisión de compresor',
       'Plan de mantención anual',
-    ],
-  },
-  {
-    id: 'tableros-automatizacion',
-    icon: '⚡',
-    title: 'Tableros y Automatización',
-    description:
-      'Fabricación e instalación de tableros eléctricos a medida y sistemas de automatización para control inteligente de instalaciones.',
-    features: [
-      'Tableros BT y MT',
-      'PLC y SCADA',
-      'Domótica residencial',
-      'Monitoreo remoto IoT',
     ],
   },
 ] as const
