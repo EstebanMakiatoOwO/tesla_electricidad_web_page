@@ -8,7 +8,7 @@ import {
 import type { MouseEvent } from 'react'
 import { NAV_LINKS } from '@application/constants'
 import { COMPANY } from '@application/data'
-import { Button, ElectricBorder } from '@components/ui'
+import { Button, GooeyNav } from '@components/ui'
 import { fadeUpVariants, staggerContainerVariants } from '@animations/variants'
 import { defaultTransition, heroTransition } from '@animations/transitions'
 import { useNavbar } from './useNavbar'
@@ -31,9 +31,6 @@ export function Navbar() {
   const { isScrolled, isMobileOpen, toggleMobile, closeMobile } = useNavbar()
 
   // ── Spotlight cursor glow ─────────────────────────────────────────────────
-  // mouseX/Y track raw cursor position relative to the header.
-  // springX/Y add a smooth spring lag so the glow trails naturally.
-  // Start off-screen (-500) so there's no glow until the user mouses in.
   const mouseX = useMotionValue(-500)
   const mouseY = useMotionValue(-500)
   const springX = useSpring(mouseX, { stiffness: 400, damping: 40, mass: 0.5 })
@@ -42,7 +39,7 @@ export function Navbar() {
   const spotlightStyle = useTransform(
     [springX, springY],
     ([x, y]: number[]) =>
-      `radial-gradient(380px circle at ${x}px ${y}px, rgb(59 130 246 / 0.14), transparent 70%)`
+      `radial-gradient(360px circle at ${x}px ${y}px, rgb(59 130 246 / 0.12), transparent 70%)`
   )
 
   const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
@@ -66,26 +63,27 @@ export function Navbar() {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         className={[
-          'fixed top-0 left-0 right-0 z-sticky overflow-hidden',
+          'fixed top-0 left-0 right-0 z-sticky',
           'transition-all duration-slow',
           isScrolled
-            ? 'bg-navy-950/95 backdrop-blur-md border-b border-white/10'
+            ? 'bg-black/95 backdrop-blur-md border-b border-electric-500/10'
             : 'bg-transparent',
         ].join(' ')}
       >
-        {/* Spotlight layer — renders behind all nav content */}
+        {/* Spotlight layer */}
         <m.div
           style={{ background: spotlightStyle }}
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
         />
 
-        <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 grid grid-cols-[1fr_auto_1fr] items-center">
+
           {/* ── Logo ── */}
           <a
             href="#hero"
             onClick={closeMobile}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 group justify-self-start"
             aria-label={COMPANY.name}
           >
             <m.span
@@ -102,48 +100,14 @@ export function Navbar() {
             </span>
           </a>
 
-          {/* ── Desktop nav ── */}
-          <ul className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2" role="list">
-            {NAV_LINKS.map((link) => (
-              // Each li is a hover group. The ElectricBorder is an absolutely
-              // positioned overlay (pointer-events-none) that fades in on hover.
-              // The visible link text sits above it on z-10, always clickable.
-              <li key={link.href} className="relative group/navlink">
-                {/* ElectricBorder overlay — hidden by default, appears on hover */}
-                <div className={[
-                  'absolute -inset-x-3 -inset-y-2',
-                  'opacity-0 group-hover/navlink:opacity-100',
-                  'transition-opacity duration-200 pointer-events-none',
-                ].join(' ')}>
-                  <ElectricBorder
-                    color="#60a5fa"
-                    speed={2.5}
-                    chaos={0.09}
-                    borderRadius={6}
-                  >
-                    {/* Invisible spacer so ElectricBorder sizes to the link */}
-                    <span className="invisible block px-3 py-2 text-sm">
-                      {link.label}
-                    </span>
-                  </ElectricBorder>
-                </div>
+          {/* ── GooeyNav desktop ── */}
+          <div className="hidden md:block">
+            <GooeyNav items={NAV_LINKS} />
+          </div>
 
-                {/* Actual link — always visible, above the overlay */}
-                <m.a
-                  href={link.href}
-                  className="relative z-10 text-sm font-medium text-white/70"
-                  whileHover={{ color: 'rgb(255 255 255)' }}
-                  transition={{ duration: 0.15 }}
-                >
-                  {link.label}
-                </m.a>
-              </li>
-            ))}
-          </ul>
-
-          {/* ── Hamburger button (mobile only) ── */}
+          {/* ── Hamburger (mobile only) ── */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2 -mr-2 rounded-md"
+            className="md:hidden flex flex-col gap-1.5 p-2 -mr-2 rounded-md justify-self-end"
             onClick={toggleMobile}
             aria-label={isMobileOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={isMobileOpen}
@@ -174,14 +138,14 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileOpen && (
           <>
-            {/* Scrim backdrop */}
+            {/* Backdrop */}
             <m.div
               key="backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-overlay bg-navy-950/80 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-overlay bg-black/80 backdrop-blur-sm md:hidden"
               onClick={closeMobile}
               aria-hidden="true"
             />
@@ -195,7 +159,7 @@ export function Navbar() {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className={[
                 'fixed top-20 left-0 right-0 z-sticky md:hidden',
-                'bg-navy-900/98 backdrop-blur-md border-b border-white/10',
+                'bg-black/98 backdrop-blur-md border-b border-electric-500/10',
                 'px-4 pt-6 pb-8',
               ].join(' ')}
               role="dialog"
@@ -215,7 +179,7 @@ export function Navbar() {
                       onClick={closeMobile}
                       className={[
                         'block py-3 px-4 rounded-button text-lg font-medium',
-                        'text-white/80 hover:text-white hover:bg-white/5',
+                        'text-white/80 hover:text-white hover:bg-electric-500/5',
                         'transition-colors duration-normal',
                       ].join(' ')}
                     >
