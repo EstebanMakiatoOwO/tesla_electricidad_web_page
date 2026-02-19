@@ -25,22 +25,18 @@
     "noUncheckedSideEffectImports": true,
 
     /* Path aliases — mirrors Vite resolve.alias in vite.config.ts.
-       baseUrl is deprecated in TS 5.x but still required for paths to resolve
-       correctly. ignoreDeprecations silences the warning as per the TS team
-       recommendation until TS 7 ships a replacement. */
-    "ignoreDeprecations": "6.0",
-    "baseUrl": ".",
+       Using ./ relative paths avoids the need for baseUrl entirely. */
     "paths": {
-      "@domain/*": ["src/domain/*"],
-      "@application/*": ["src/application/*"],
-      "@infrastructure/*": ["src/infrastructure/*"],
-      "@presentation/*": ["src/presentation/*"],
-      "@components/*": ["src/presentation/components/*"],
-      "@sections/*": ["src/presentation/sections/*"],
-      "@hooks/*": ["src/presentation/hooks/*"],
-      "@layouts/*": ["src/presentation/layouts/*"],
-      "@animations/*": ["src/presentation/animations/*"],
-      "@styles/*": ["src/presentation/styles/*"]
+      "@domain/*": ["./src/domain/*"],
+      "@application/*": ["./src/application/*"],
+      "@infrastructure/*": ["./src/infrastructure/*"],
+      "@presentation/*": ["./src/presentation/*"],
+      "@components/*": ["./src/presentation/components/*"],
+      "@sections/*": ["./src/presentation/sections/*"],
+      "@hooks/*": ["./src/presentation/hooks/*"],
+      "@layouts/*": ["./src/presentation/layouts/*"],
+      "@animations/*": ["./src/presentation/animations/*"],
+      "@styles/*": ["./src/presentation/styles/*"]
     }
   },
   "include": ["src"]

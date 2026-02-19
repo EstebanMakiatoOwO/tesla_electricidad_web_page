@@ -1,1 +1,1 @@
-export { Button, SectionHeading, Badge } from './ui'
+export { Button, SectionHeading, Badge, ElectricBorder } from './ui'

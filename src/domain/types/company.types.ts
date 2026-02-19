@@ -4,6 +4,5 @@ export interface CompanyInfo {
   readonly phone: string
   readonly email: string
   readonly address: string
-  readonly licenseNumber: string
   readonly foundedYear: number
 }
