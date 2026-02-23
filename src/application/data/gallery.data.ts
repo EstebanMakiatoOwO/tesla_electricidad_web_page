@@ -57,11 +57,11 @@ export const GALLERY_PROJECTS: readonly GalleryProject[] = [
 ] as const
 
 export const CERTIFICATIONS = [
-  'Samsung',
+  'Mirage',
+  'Prime',
   'LG',
+  'Samsung',
   'Midea',
-  'Daikin',
-  'Carrier',
-  'Mitsubishi Electric',
   'Trane',
+  'Y más...',
 ] as const
