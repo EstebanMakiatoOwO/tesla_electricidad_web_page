@@ -24,7 +24,7 @@ export function Services() {
           />
           <p className="max-w-2xl mx-auto text-white/50 text-lg leading-relaxed">
             Especialistas en media y baja tensión. Más de 15 años
-            respaldando hogares, oficinas e industrias en todo México.
+            respaldando hogares, oficinas e industrias en todo el Sureste de  México.
           </p>
         </FadeContent>
 

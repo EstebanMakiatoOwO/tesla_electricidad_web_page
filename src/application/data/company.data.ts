@@ -6,5 +6,5 @@ export const COMPANY: CompanyInfo = {
   phone: '+52 961 1 501 271',
   email: 'perezlopezsalvadordejesus@gmail.com',
   address: "Av. hechos no palabras , Tuxtla Gutiérrez, Mexico, 29017",
-  foundedYear: 2005,
+  foundedYear: 2011,
 }

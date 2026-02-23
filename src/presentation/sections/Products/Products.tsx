@@ -16,7 +16,7 @@ const AC_PRODUCTS = [
     icon: '🔧',
     name: 'Mantenimiento A/C',
     brand: 'Correctivo · Preventivo',
-    description: 'Mantenemos tu equipo funcionando al máximo rendimiento. Contamos con refacciones y accesorios originales en stock.',
+    description: 'Mantenemos tu equipo funcionando al máximo rendimiento. Contamos con refacciones y accesorios originales.',
     features: ['Mantenimiento correctivo', 'Mantenimiento preventivo', 'Suministro de refacciones', 'Accesorios y consumibles'],
   },
   {

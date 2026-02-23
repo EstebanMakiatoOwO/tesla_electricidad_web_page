@@ -34,13 +34,12 @@ export const SERVICES: readonly Service[] = [
     ],
   },
   {
-    id: 'mantencion-electrica',
+    id: 'mantenimiento-electrica',
     icon: '🔧',
-    title: 'Mantención y Reparación',
+    title: 'Mantenimiento y Reparación',
     description:
       'Servicio técnico preventivo y correctivo para instalaciones eléctricas. Atención de emergencias las 24 horas, los 7 días.',
     features: [
-      'Diagnóstico termográfico',
       'Reemplazo de componentes',
       'Emergencias 24/7',
       'Informe técnico detallado',
@@ -55,14 +54,13 @@ export const SERVICES: readonly Service[] = [
     features: [
       'Split y Multisplit',
       'Sistemas centralizados',
-      'VRF / VRV industriales',
       'Garantía de instalación',
     ],
   },
   {
-    id: 'ac-mantencion',
+    id: 'ac-mantenimiento',
     icon: '🌡️',
-    title: 'Mantención Aire Acondicionado',
+    title: 'Mantenimiento de Aire Acondicionado',
     description:
       'Limpieza profunda, recarga de gas refrigerante y revisión completa para mantener tu equipo al 100% de eficiencia.',
     features: [
