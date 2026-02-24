@@ -88,6 +88,30 @@
 }
 
 /* =============================================
+   KEYFRAMES
+   ============================================= */
+@keyframes electric-flicker {
+  /* Base glow — la mayor parte del tiempo */
+  0%, 15%, 17%, 19%, 65%, 67%, 69%, 100% {
+    filter:
+      drop-shadow(0 0 18px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 48px rgba(59, 130, 246, 0.6))
+      drop-shadow(0 0 90px rgba(96, 165, 250, 0.35));
+  }
+  /* Apagón rápido */
+  16%, 66% {
+    filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.25));
+  }
+  /* Chispazo post-apagón */
+  18%, 68% {
+    filter:
+      drop-shadow(0 0 28px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 72px rgba(59, 130, 246, 1))
+      drop-shadow(0 0 130px rgba(96, 165, 250, 0.7));
+  }
+}
+
+/* =============================================
    BASE LAYER — CSS reset and global defaults
    ============================================= */
 @layer base {
@@ -172,6 +196,11 @@
 
   .shadow-electric-lg {
     box-shadow: var(--shadow-electric-lg);
+  }
+
+  /* Electric flicker — simulates neon/voltage fluctuation */
+  .animate-electric-flicker {
+    animation: electric-flicker 3.5s infinite;
   }
 
   /* Section vertical rhythm — apply to every full section */
