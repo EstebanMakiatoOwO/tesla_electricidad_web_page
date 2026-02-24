@@ -22,9 +22,13 @@ export function ContactCTA() {
           {/* Logo */}
           <div className="flex justify-center">
             <img
-              src={`${import.meta.env.BASE_URL}Tesla_blanco.png`}
+              src={`${import.meta.env.BASE_URL}Tesla_blanco_nombre.png`}
               alt={COMPANY.name}
-              className="h-50 w-auto drop-shadow-[0_0_32px_rgba(59,130,246,0.55)]"
+              className="h-50 w-auto"
+              style={{
+                filter:
+                  'drop-shadow(0 0 18px rgba(59,130,246,1)) drop-shadow(0 0 48px rgba(59,130,246,0.6)) drop-shadow(0 0 90px rgba(96,165,250,0.35))',
+              }}
             />
           </div>
 
