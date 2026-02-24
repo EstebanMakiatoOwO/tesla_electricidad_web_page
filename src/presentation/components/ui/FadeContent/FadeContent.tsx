@@ -54,9 +54,9 @@ export function FadeContent({
       ? ScrollTrigger.create({
           trigger: el,
           start: `top ${startPct}%`,
-          end: 'top 10%',
+          end: 'top -60%',
           animation: tl,
-          toggleActions: 'play reverse play reverse',
+          toggleActions: 'play none none reverse',
         })
       : ScrollTrigger.create({
           trigger: el,
