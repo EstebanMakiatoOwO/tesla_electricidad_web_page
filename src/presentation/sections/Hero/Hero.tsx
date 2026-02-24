@@ -23,7 +23,6 @@ export function Hero() {
       <HeroBackground />
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
         {/* ── Badge ─────────────────────────────────────────────────────── */}
         <m.div
           initial={{ opacity: 0, scale: 0.9 }}

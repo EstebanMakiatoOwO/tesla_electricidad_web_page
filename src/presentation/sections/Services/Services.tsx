@@ -28,7 +28,7 @@ export function Services() {
           </p>
         </FadeContent>
 
-        <FadeContent blur duration={700} threshold={0.05} delay={100}>
+        <FadeContent blur duration={700} threshold={0.01} delay={100}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICES.map((service) => (
               <SpotlightCard

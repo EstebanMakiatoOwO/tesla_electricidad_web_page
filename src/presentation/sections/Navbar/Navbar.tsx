@@ -10,12 +10,8 @@ const SOCIAL_ITEMS = [
 ]
 
 const Logo = (
-  <a href="#hero" className="flex items-center gap-2 no-underline" aria-label={COMPANY.name}>
-    <span className="text-electric-400 text-2xl select-none" aria-hidden="true">⚡</span>
-    <span className="text-lg font-bold tracking-tight">
-      <span className="text-electric-400">Tesla</span>
-      <span className="text-white"> Electricidad</span>
-    </span>
+  <a href="#hero" className="flex items-center no-underline" aria-label={COMPANY.name}>
+    <img src={`${import.meta.env.BASE_URL}Tesla_blanco_ico.png`} alt={COMPANY.name} className="h-20 w-auto" />
   </a>
 )
 
