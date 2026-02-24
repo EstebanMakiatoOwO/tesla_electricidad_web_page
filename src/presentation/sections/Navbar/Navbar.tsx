@@ -11,7 +11,7 @@ const SOCIAL_ITEMS = [
 
 const Logo = (
   <a href="#hero" className="flex items-center no-underline" aria-label={COMPANY.name}>
-    <img src={`${import.meta.env.BASE_URL}Tesla_blanco_ico.png`} alt={COMPANY.name} className="h-20 w-auto" />
+    <img src={`${import.meta.env.BASE_URL}Tesla_blanco.png`} alt={COMPANY.name} className="h-20 w-auto" />
   </a>
 )
 
