@@ -10,6 +10,7 @@ interface FadeContentProps extends React.HTMLAttributes<HTMLDivElement> {
   delay?: number
   threshold?: number
   initialOpacity?: number
+  repeat?: boolean
 }
 
 export function FadeContent({
@@ -20,6 +21,7 @@ export function FadeContent({
   delay = 0,
   threshold = 0.15,
   initialOpacity = 0,
+  repeat = true,
   className = '',
   ...props
 }: FadeContentProps) {
@@ -48,12 +50,20 @@ export function FadeContent({
       ease,
     })
 
-    const st = ScrollTrigger.create({
-      trigger: el,
-      start: `top ${startPct}%`,
-      once: true,
-      onEnter: () => tl.play(),
-    })
+    const st = repeat
+      ? ScrollTrigger.create({
+          trigger: el,
+          start: `top ${startPct}%`,
+          end: 'top 10%',
+          animation: tl,
+          toggleActions: 'play reverse play reverse',
+        })
+      : ScrollTrigger.create({
+          trigger: el,
+          start: `top ${startPct}%`,
+          once: true,
+          onEnter: () => tl.play(),
+        })
 
     return () => {
       st.kill()

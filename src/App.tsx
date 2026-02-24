@@ -9,7 +9,6 @@ import { About } from '@sections/About'
 import { Testimonials } from '@sections/Testimonials'
 import { ContactCTA } from '@sections/ContactCTA'
 import { Footer } from '@sections/Footer'
-import { ParallaxSection } from '@components/ui'
 
 /* Each section slides up (GSAP scrub) as it enters — and slides back down
    when scrolling up. Higher z-index sections render on top of previous ones,
@@ -29,17 +28,11 @@ function App() {
       <Navbar />
       <PageLayout>
         <Hero />
-
-        {SECTION_ITEMS.map(({ id, el }, i) => (
-          <ParallaxSection key={id} zIndex={i + 1}>
-            {el}
-          </ParallaxSection>
+        {SECTION_ITEMS.map(({ id, el }) => (
+            <div key={id}>{el}</div>
         ))}
       </PageLayout>
-
-      <ParallaxSection zIndex={SECTION_ITEMS.length + 1}>
         <Footer />
-      </ParallaxSection>
     </RootLayout>
   )
 }
