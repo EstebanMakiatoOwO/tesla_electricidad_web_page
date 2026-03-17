@@ -1,74 +1,123 @@
-# React + TypeScript + Vite
+# Tesla Electricidad — Sitio Web Corporativo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web de presentación para **Tesla Electricidad**, empresa especializada en instalaciones de media y baja tensión con sede en Tuxtla Gutiérrez, Chiapas.
 
-Currently, two official plugins are available:
+**Live:** [estebanmakiatoowo.github.io/tesla_electricidad_web_page](https://estebanmakiatoowo.github.io/tesla_electricidad_web_page)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Tecnología | Versión | Uso |
+|---|---|---|
+| React | 19 | UI framework |
+| TypeScript | 5.9 | Tipado estático |
+| Vite | 7 | Bundler / dev server |
+| Tailwind CSS | 4 | Estilos utilitarios |
+| GSAP + ScrollTrigger | 3 | Animaciones de scroll |
+| Framer Motion | 12 | Animaciones declarativas |
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Estructura del proyecto
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── application/
+│   ├── constants/       # IDs de secciones, links de navegación
+│   └── data/            # Datos estáticos (empresa, servicios, galería, testimonios)
+│
+├── infrastructure/
+│   ├── gsap/            # Registro de plugins y config global de GSAP
+│   └── framerMotion/    # LazyMotion provider
+│
+└── presentation/
+    ├── animations/      # Variantes y transiciones reutilizables de Framer Motion
+    ├── components/ui/   # Componentes atómicos
+    ├── layouts/         # RootLayout, PageLayout
+    └── sections/        # Secciones de la página
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Secciones
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Sección | Descripción |
+|---|---|
+| `Hero` | Pantalla completa con stats animados y fondo de relámpagos |
+| `Services` | Grid de cards con servicios eléctricos |
+| `Products` | Catálogo de productos |
+| `Gallery` | Showcase de proyectos con TiltedCard |
+| `About` | Historia de la empresa + highlights |
+| `Testimonials` | Testimonios de clientes |
+| `ContactCTA` | Llamada a la acción con logo con efecto eléctrico |
+| `Footer` | Links, contacto y créditos |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Componentes UI destacados
+
+- **`FadeContent`** — Fade-in/out con GSAP ScrollTrigger. Soporta blur, delay y repeat.
+- **`BlurText`** — Animación de texto letra por letra con desenfoque.
+- **`ShinyText`** — Texto con efecto de brillo deslizante.
+- **`CountUp`** — Contador numérico animado al entrar al viewport.
+- **`SpotlightCard`** — Card con spotlight que sigue el cursor.
+- **`TiltedCard`** — Card con efecto 3D tilt en hover.
+- **`Magnet`** — Wrapper que atrae elementos hacia el cursor.
+- **`StaggeredMenu`** — Navbar fullscreen con animación escalonada.
+- **`Lightning`** — Canvas con efecto de relámpago animado.
+- **`ScrollStack`** — Secciones apiladas con efecto de profundidad al hacer scroll.
+- **`ParallaxSection`** — Sección con entrada parallax scrubbed.
+
+---
+
+## Comandos
+
+```bash
+# Instalar dependencias
+npm install
+
+# Servidor de desarrollo
+npm run dev
+
+# Build para producción
+npm run build
+
+# Vista previa del build
+npm run preview
+
+# Lint
+npm run lint
+
+# Deploy a GitHub Pages
+npm run deploy
 ```
-# tesla_electricidad_web_page
+
+---
+
+## Arquitectura de animaciones
+
+Las animaciones de scroll se manejan con **GSAP ScrollTrigger** (`ignoreMobileResize: true` activado globalmente). El componente `FadeContent` es el building block principal:
+
+- `start: 'top <threshold>%'` — el elemento entra cuando llega a cierto % del viewport
+- `end: 'bottom top'` — el reverse se dispara solo cuando el elemento sale completamente por arriba
+- `toggleActions: 'play reverse play reverse'` — permite ver la animación de entrada al bajar y al volver a subir
+
+Las animaciones de entrada de UI (Hero) usan **Framer Motion** con `LazyMotion + domAnimation` para minimizar el bundle.
+
+---
+
+## Deploy
+
+El proyecto se publica en **GitHub Pages** usando `gh-pages`. El `base` de Vite está configurado en `/tesla_electricidad_web_page/` para que los assets resuelvan correctamente.
+
+```bash
+npm run deploy   # ejecuta build y publica la carpeta dist/
+```
+
+---
+
+## Personalización de contenido
+
+Todo el contenido editable está centralizado en [`src/application/data/`](src/application/data/):
+
+- `company.data.ts` — nombre, teléfono, email, dirección, año de fundación
+- `services.data.ts` — lista de servicios con icono, descripción y features
+- `gallery.data.ts` — proyectos del showcase con imagen y categoría
+- `testimonials.data.ts` — testimonios de clientes

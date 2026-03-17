@@ -1,0 +1,7 @@
+export { COMPANY } from './company.data'
+export { SERVICES } from './services.data'
+export type { Service } from './services.data'
+export { TESTIMONIALS } from './testimonials.data'
+export type { Testimonial } from './testimonials.data'
+export { GALLERY_PROJECTS, CERTIFICATIONS } from './gallery.data'
+export type { GalleryProject } from './gallery.data'
