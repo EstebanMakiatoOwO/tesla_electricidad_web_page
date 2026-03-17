@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/tesla_electricidad_web_page/',
+  base: '/',
   resolve: {
     alias: {
       '@domain': path.resolve(__dirname, './src/domain'),
